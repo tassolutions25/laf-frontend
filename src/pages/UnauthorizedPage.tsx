@@ -11,7 +11,7 @@ export const UnauthorizedPage: React.FC = () => {
                 </div>
                 <h2 className="text-xl font-bold text-slate-800">Access Denied</h2>
                 <p className="text-sm text-slate-500 mt-2">Your current role doesn't have authorization to ciew this resource</p>
-                <Link to="/dashboard" className="mt-6 inline-block px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
+                <Link to="/dashboard" className="mt-6 inline-block px-4 py-2 bg-primary text-white rounded-lg text-sm font-medium hover:bg-primary-hover transition-colors">
                     Return to Dashboard
                 </Link>
             </div>

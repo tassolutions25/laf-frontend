@@ -38,7 +38,7 @@ export const MainLayout: React.FC = () => {
             <aside className="1-64 bg-slate-900 text-slate-200 flex flex-col flex-shrink-0 border-r border-slate-800">
                 {/* brand */}
                 <div className="h-16 flex ite,s-center px-6 bg-slate-950 gap-3 border-b border-slate-800">
-                    <div className="w-8 h-8 rounded-lg bf-blue-600 flex items-center justify-center text-white font-bold text-lg">
+                    <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white font-bold text-lg">
                         L
                     </div>
                     <div>
@@ -48,7 +48,7 @@ export const MainLayout: React.FC = () => {
                 </div>
                 {/* navigation items */}
                 <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
-                    <NavLink to="/dashboard" className={({ isActive }) => `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors${isActive ? 'bg-blue-600 text-white shadow-sm' : 'text-slate-300 hover:bg-slate-800 hover:text-white'
+                    <NavLink to="/dashboard" className={({ isActive }) => `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors${isActive ? 'bg-primary text-white shadow-sm' : 'text-slate-300 hover:bg-slate-800 hover:text-white'
                         }`}>
                         <LayoutDashboard className="w-4 h-4" />
                         Dashboard
@@ -60,14 +60,14 @@ export const MainLayout: React.FC = () => {
                             <div className="pt-4 pb-1 px-3 text-xs font-semibold uppercase tracking-wider text-slate-400">
                                 Maker Actions
                             </div>
-                            <NavLink to="/registry/new" className={({ isActive }) => `flex items-center gap-3 px-3 py-2.5 rounded-lg rext-sm font-medium transition-colors ${isActive ? 'bg-blue-600 text-white shadow-sm' : 'text-slate-300 hover:bg-slate-800 hover:text-white'
+                            <NavLink to="/registry/new" className={({ isActive }) => `flex items-center gap-3 px-3 py-2.5 rounded-lg rext-sm font-medium transition-colors ${isActive ? 'bg-primary text-white shadow-sm' : 'text-slate-300 hover:bg-slate-800 hover:text-white'
                                 }`
                             }
                             >
                                 <FilePlus className="w-4 h-4" />
                                 New Registration
                             </NavLink>
-                            <NavLink to="/iterations/request" className={({ isActive }) => `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${isActive ? 'bg-blue-600 text-white shadow-sm' : 'text-slate-300 hover:bf-slate-800 hover:text-white'
+                            <NavLink to="/iterations/request" className={({ isActive }) => `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${isActive ? 'bg-primary text-white shadow-sm' : 'text-slate-300 hover:bf-slate-800 hover:text-white'
                                 }`}>
                                 <Clock className="w-4 h-4" />
                                 Request Iteration
@@ -81,7 +81,7 @@ export const MainLayout: React.FC = () => {
                             <div className="pt-4 pb-1 px-3 text-xs font-semibold uppercase tracking-wider text-slate-400">
                                 Checker Actions
                             </div>
-                            <NavLink to="/iterations/pending" className={({ isActive }) => `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${isActive ? 'bg-blue-600 text-white shadow-sm' : 'text-slate-300 hover:bg-slate-800 hover:text-white'
+                            <NavLink to="/iterations/pending" className={({ isActive }) => `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${isActive ? 'bg-primary text-white shadow-sm' : 'text-slate-300 hover:bg-slate-800 hover:text-white'
                                 }`}
                             >
                                 <ShieldCheck className="w-4 h-4" />
@@ -94,12 +94,12 @@ export const MainLayout: React.FC = () => {
                     <div className="pt-4 pb-1 px-3 text-xs font-semibold uppercase tracking-wider text-slate-400">
                         Records
                     </div>
-                    <NavLink to="/registry/search" className={({ isActive }) => `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${isActive ? 'bg-blue-600 texy-white shadow-sm' : 'text-slate-300 hover:bg-slate-800 hover:text-white'
+                    <NavLink to="/registry/search" className={({ isActive }) => `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${isActive ? 'bg-primary texy-white shadow-sm' : 'text-slate-300 hover:bg-slate-800 hover:text-white'
                         }`}>
                         <Search className="w-4 h-4" />
                         Registry Search
                     </NavLink>
-                    <NavLink to="/reports" className={({ isActive }) => `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${isActive ? 'bg-blue-600 text-white shadow-sm' : 'text-slate-300 hover:bg-slate-800 hover:text-white'
+                    <NavLink to="/reports" className={({ isActive }) => `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${isActive ? 'bg-primary text-white shadow-sm' : 'text-slate-300 hover:bg-slate-800 hover:text-white'
                         }`}>
                         <FileBarChart className="w-4 h-4" />
                         Reports
@@ -111,12 +111,12 @@ export const MainLayout: React.FC = () => {
                             <div className="pt-4 pb-1 px-3 text-xs font-semibold uppercase tracking-wider text-slate-400">
                                 System
                             </div>
-                            <NavLink to="/audit-trail" className={({ isActive }) => `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition colors ${isActive ? 'bg-blue-600 text-white shadow-sm' : 'text-slate-300 hover:bg-slate-800 hover:text-white'
+                            <NavLink to="/audit-trail" className={({ isActive }) => `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition colors ${isActive ? 'bg-primary text-white shadow-sm' : 'text-slate-300 hover:bg-slate-800 hover:text-white'
                                 }`}>
                                 <UserCheck className="w-4 h-4" />
                                 Audit Trail
                             </NavLink>
-                            <NavLink to="/config" className={({ isActive }) => `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${isActive ? 'bg-blue-600 text-white shadow-sm' : 'text-slate-300 hover:bg-slate-800 hover:text-white'
+                            <NavLink to="/config" className={({ isActive }) => `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${isActive ? 'bg-primary text-white shadow-sm' : 'text-slate-300 hover:bg-slate-800 hover:text-white'
 
                                 }`}>
                                 <Settings className="w-4 h-4" />
@@ -152,7 +152,7 @@ export const MainLayout: React.FC = () => {
                         </span>
 
                         {/* active role badge */}
-                        <span className={`text-xs font-bold px-2.5 py-1 rounded-md uppercase tracking-wider ${activeRole === 'MAKER' ? 'bg-blue-50 text-blue-700 border border-blue-200' :
+                        <span className={`text-xs font-bold px-2.5 py-1 rounded-md uppercase tracking-wider ${activeRole === 'MAKER' ? 'bg-primary-light text-primary border border-primary-muted' :
                             activeRole === 'CHECKER' ? 'bg-amber-50 text-amber-700 border border-amber-200' : 'bg-purple-50 text-purple-700 border border-purple-200'
                             }`}>{activeRole}</span>
                     </div>

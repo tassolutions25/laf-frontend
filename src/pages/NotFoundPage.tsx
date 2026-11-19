@@ -9,7 +9,7 @@ export const NotFoundPage: React.FC = () => {
                 <p className="text-slate-600 mt-2">Page Not Found</p>
                 <Link
                     to="/dashboard"
-                    className="mt-6 inline-block px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
+                    className="mt-6 inline-block px-4 py-2 bg-primary text-white rounded-lg text-sm font-medium hover:bg-primary transition-colors"
                 >
                     Back to Home
                 </Link>
