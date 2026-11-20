@@ -7,6 +7,8 @@ import { DashboardPage } from './pages/DashboardPage'
 import { UnauthorizedPage } from './pages/UnauthorizedPage'
 import { NotFoundPage } from './pages/NotFoundPage'
 import { ReportsPage } from './pages/ReportsPage'
+import { AuditTrailPage } from './pages/AuditTrailPage'
+import { SystemConfigPage } from './pages/SystemConfigPage';
 import './App.css'
 
 function App() {
@@ -60,20 +62,8 @@ function App() {
 
             {/* admin only routes */}
             <Route element={<ProtectedRoute allowedRoles={['ADMIN']} />}>
-              <Route path="/audit-trail" element={
-                <div className="p-6 bg-white rounded-xl border border-slate-200">
-                  <h2 className="text-xl font-bold text-slate-800">Audit Trail</h2>
-                  <p className="text-sm text-slate-500 mt-1">System Audit Logs</p>
-                </div>
-              }
-              />
-              <Route path="/config" element={
-                <div className="p-6 bg-white rounded-xl border border-slate-200">
-                  <h2 className="text-xl font-bold text-slate-800">System Configuration</h2>
-                  <p className="text-sm text-slate-500 mt-1">System Config Parameters</p>
-                </div>
-              }
-              />
+              <Route path="/audit-trail" element={<AuditTrailPage />} />
+              <Route path="/config" element={<SystemConfigPage />} />
             </Route>
           </Route>
         </Route>
