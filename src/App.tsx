@@ -6,6 +6,7 @@ import { LoginPage } from './pages/LoginPage'
 import { DashboardPage } from './pages/DashboardPage'
 import { UnauthorizedPage } from './pages/UnauthorizedPage'
 import { NotFoundPage } from './pages/NotFoundPage'
+import { ReportsPage } from './pages/ReportsPage'
 import './App.css'
 
 function App() {
@@ -55,15 +56,8 @@ function App() {
               </div>
             }
             />
-            <Route
-              path="/reports"
-              element={
-                <div className="p-6 bg-white rounded-xl border border-slate-200">
-                  <h2 className="text-xl font-bold text-slate-800">Reports</h2>
-                  <p className="text-sm text-slate-500 mt-1">Report Generation...</p>
-                </div>
-              }
-            />
+            <Route path="/reports" element={<ReportsPage />} />
+
             {/* admin only routes */}
             <Route element={<ProtectedRoute allowedRoles={['ADMIN']} />}>
               <Route path="/audit-trail" element={

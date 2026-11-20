@@ -30,17 +30,21 @@ apiClient.interceptors.request.use(
 apiClient.interceptors.response.use(
     (response) => response,
     (error: AxiosError<{ message?: string | string[]; error?: string }>) => {
-        if (error.response?.status === 401) {
+        const isLoginRequest = error.config?.url?.includes('/auth/login');
+
+        if (error.response?.status === 401 && !isLoginRequest) {
             sessionStorage.removeItem(STORAGE_KEYS.USER);
             sessionStorage.removeItem(STORAGE_KEYS.TICKET);
 
             if (!window.location.pathname.includes('/login')) {
-                window.location.href = '/login'
+                window.location.href = '/login';
             }
         }
 
         const rawMessage = error.response?.data?.message;
-        const formattedMessage = Array.isArray(rawMessage) ? rawMessage.join(', ') : rawMessage || error.message || 'An unexpected error occurred';
+        const formattedMessage = Array.isArray(rawMessage)
+            ? rawMessage.join(', ')
+            : rawMessage || error.message || 'An unexpected error occurred';
 
         return Promise.reject(new Error(formattedMessage));
     }

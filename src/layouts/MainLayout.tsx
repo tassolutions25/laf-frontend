@@ -33,11 +33,11 @@ export const MainLayout: React.FC = () => {
     };
 
     return (
-        <div className="flex h-screen bg-slate-50 overflow-hidden font-sans">
+        <div className="flex h-screen bg-slate-50 overflow-hidden font-sans print:h-auto print:overflow-visible">
             {/* sidebar */}
-            <aside className="1-64 bg-slate-900 text-slate-200 flex flex-col flex-shrink-0 border-r border-slate-800">
+            <aside className="w-64 bg-slate-900 text-slate-200 flex flex-col flex-shrink-0 border-r border-slate-800 print:hidden">
                 {/* brand */}
-                <div className="h-16 flex ite,s-center px-6 bg-slate-950 gap-3 border-b border-slate-800">
+                <div className="h-24  pt-8 flex ite,s-center px-6 bg-slate-950 gap-3 border-b border-slate-800">
                     <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white font-bold text-lg">
                         L
                     </div>
@@ -144,7 +144,7 @@ export const MainLayout: React.FC = () => {
             {/* main container */}
             <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
                 {/* header */}
-                <header className="h-16 bg-white border-b border-slate-200 px-6 flex items-center justify-between flex-shrink-0">
+                <header className="h-16 bg-white border-b border-slate-200 px-6 flex items-center justify-between flex-shrink-0 print:hidden">
                     <div className="flex items-center gap-3">
                         <span className="flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 border border-slate-200">
                             <Building2 className="w-3.5 h-3.5 text-slate-500" />
@@ -169,7 +169,7 @@ export const MainLayout: React.FC = () => {
                         </div>
                     )}
                 </header>
-                <main className="flex-1 p-6 overflow-y-auto">
+                <main className="flex-1 p-6 overflow-y-auto print:p-0 print:overflow-visible">
                     <Outlet />
                 </main>
             </div>

@@ -19,10 +19,21 @@ export const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
 const HEARTBEAT_INTERVAL_MS = 4 * 60 * 1000;
 
+// TEMPORARY: Dev mock user to bypass ARX login
+const DEV_MOCK_USER: AuthUser = {
+    username: 'admin',
+    fullName: 'Test Officer (Dev Mode)',
+    roles: ['MAKER', 'CHECKER', 'ADMIN'],
+    rawRoles: ['DEVMKR', 'DEVCHKR', 'ADMIN'],
+    branch: '9997',
+    ticket: 'dev-mock-ticket',
+    sessionExpiresAt: new Date(Date.now() + 86400000).toISOString(),
+};
+
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [user, setUser] = useState<AuthUser | null>(null);
-    const [activeRole, setActiveRole] = useState<AppRole | null>(null);
-    const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [user, setUser] = useState<AuthUser | null>(DEV_MOCK_USER);
+    const [activeRole, setActiveRole] = useState<AppRole | null>('ADMIN');
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const heartbeatTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
     const sendHeartbeat = useCallback(async () => {
@@ -74,31 +85,30 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }, []);
 
     const login = async (credentials: LoginCredentials): Promise<AuthUser> => {
-        setIsLoading(true);
-        try {
-            const response = await apiClient.post<LoginResponse>(ENDPOINTS.AUTH.LOGIN, credentials);
-            const raw = response.data
-            const normalized = normalizeRoles(raw.roles);
+        const response = await apiClient.post<LoginResponse>(
+            ENDPOINTS.AUTH.LOGIN,
+            credentials
+        );
 
-            const authenticatedUser: AuthUser = {
-                username: raw.username,
-                fullName: raw.fullName,
-                roles: normalized,
-                rawRoles: raw.roles,
-                branch: raw.branch,
-                ticket: raw.ticket,
-                sessionExpiresAt: raw.sessionExpiresAt,
-            };
+        const raw = response.data;
+        const normalized = normalizeRoles(raw.roles);
 
-            setUser(authenticatedUser);
-            setActiveRole(normalized[0] || null);
-            sessionStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(authenticatedUser));
-            sessionStorage.setItem(STORAGE_KEYS.TICKET, raw.ticket);
+        const authenticatedUser: AuthUser = {
+            username: raw.username,
+            fullName: raw.fullName,
+            roles: normalized,
+            rawRoles: raw.roles,
+            branch: raw.branch,
+            ticket: raw.ticket,
+            sessionExpiresAt: raw.sessionExpiresAt,
+        };
 
-            return authenticatedUser;
-        } finally {
-            setIsLoading(false);
-        }
+        setUser(authenticatedUser);
+        setActiveRole(normalized[0] || null);
+        sessionStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(authenticatedUser));
+        sessionStorage.setItem(STORAGE_KEYS.TICKET, raw.ticket);
+
+        return authenticatedUser;
     };
 
     const logout = async () => {
