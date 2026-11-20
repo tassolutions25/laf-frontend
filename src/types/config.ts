@@ -7,4 +7,5 @@ export interface SystemConfigItem {
 
 export interface UpdateConfigPayload {
     value: string;
+    username?: string;
 }

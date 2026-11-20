@@ -15,6 +15,7 @@ import { Button } from '../components/common/Button';
 import { Input } from '../components/common/Input';
 import { Alert } from '../components/common/Alert';
 import { Modal } from '../components/common/Modal';
+import { useAuth } from '../hooks/useAuth';
 import type { SystemConfigItem, UpdateConfigPayload } from '../types/config';
 
 export const SystemConfigPage: React.FC = () => {
@@ -27,6 +28,8 @@ export const SystemConfigPage: React.FC = () => {
     const [editValue, setEditValue] = useState('');
     const [isSaving, setIsSaving] = useState(false);
     const [editError, setEditError] = useState<string | null>(null);
+
+    const { user } = useAuth();
 
     const fetchConfigs = async () => {
         setIsLoading(true);
@@ -71,7 +74,10 @@ export const SystemConfigPage: React.FC = () => {
         setEditError(null);
 
         try {
-            const payload: UpdateConfigPayload = { value: editValue.trim() };
+            const payload = {
+                value: editValue.trim(),
+                username: user?.username || 'admin',
+            };
             await apiClient.put(ENDPOINTS.CONFIG.BY_KEY(editingConfig.key), payload);
 
             setSuccessMsg(`Parameter "${editingConfig.key}" successfully updated.`);
