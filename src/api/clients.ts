@@ -16,9 +16,22 @@ export const apiClient = axios.create({
 apiClient.interceptors.request.use(
     (config: InternalAxiosRequestConfig) => {
         const ticket = sessionStorage.getItem(STORAGE_KEYS.TICKET);
+        const userJson = sessionStorage.getItem(STORAGE_KEYS.USER)
+
         if (ticket && config.headers) {
             config.headers.Authorization = `Bearer ${ticket}`;
             config.headers['x-arx-ticket'] = ticket;
+        }
+
+        if (userJson && config.headers) {
+            try {
+                const user = JSON.parse(userJson);
+                if (user?.username) {
+                    config.headers['x-user-id'] = user.username;
+                }
+            } catch (e) {
+
+            }
         }
         return config;
     },

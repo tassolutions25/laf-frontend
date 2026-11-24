@@ -106,7 +106,7 @@ export const MainLayout: React.FC = () => {
                     </NavLink>
 
                     {/* Admin navigation */}
-                    {activeRole === 'ADMIN' && (
+                    {(activeRole === 'ADMIN' || user?.roles.includes('ADMIN')) && (
                         <>
                             <div className="pt-4 pb-1 px-3 text-xs font-semibold uppercase tracking-wider text-slate-400">
                                 System

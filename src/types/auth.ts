@@ -12,11 +12,26 @@ export const ROLE_MAP: Record<RawUserRole, AppRole> = {
 
 export function normalizeRoles(rawRoles: string[]):
     AppRole[] {
-    const normalized = rawRoles
-        .map((role) => ROLE_MAP[role as RawUserRole])
-        .filter((role): role is AppRole => Boolean(role));
+    const roles = new Set<AppRole>();
 
-    return Array.from(new Set(normalized));
+    for (const raw of rawRoles) {
+        const upper = (raw || '').toUpperCase();
+
+        if (upper === 'DEVMKR' || upper === 'LAF_MAKER') {
+            roles.add('MAKER')
+        }
+
+        if (upper === 'DEVCHKR' || upper === 'LAF_CHECKER') {
+            roles.add('CHECKER');
+            roles.add('ADMIN')
+        }
+
+        if (upper === 'ADMIN') {
+            roles.add("ADMIN")
+        }
+    }
+
+    return Array.from(roles)
 }
 
 export interface AuthUser {

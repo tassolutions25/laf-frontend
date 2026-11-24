@@ -31,9 +31,9 @@ const DEV_MOCK_USER: AuthUser = {
 };
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [user, setUser] = useState<AuthUser | null>(DEV_MOCK_USER);
-    const [activeRole, setActiveRole] = useState<AppRole | null>('ADMIN');
-    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [user, setUser] = useState<AuthUser | null>(null);
+    const [activeRole, setActiveRole] = useState<AppRole | null>(null);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
     const heartbeatTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
     const sendHeartbeat = useCallback(async () => {

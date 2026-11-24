@@ -61,7 +61,7 @@ function App() {
             <Route path="/reports" element={<ReportsPage />} />
 
             {/* admin only routes */}
-            <Route element={<ProtectedRoute allowedRoles={['ADMIN']} />}>
+            <Route element={<ProtectedRoute allowedRoles={['ADMIN', 'CHECKER']} />}>
               <Route path="/audit-trail" element={<AuditTrailPage />} />
               <Route path="/config" element={<SystemConfigPage />} />
             </Route>

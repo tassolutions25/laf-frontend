@@ -35,7 +35,7 @@ export const ReportsPage: React.FC = () => {
     const [customerName, setCustomerName] = useState('');
     const [fromDate, setFromDate] = useState('');
     const [toDate, setToDate] = useState('');
-    const [lafFilterType, setLafFilterType] = useState<LafReportFilterType>('daily');
+    const [lafFilterType, setLafFilterType] = useState<LafReportFilterType>('monthly');
     const [iterFilterType, setIterFilterType] = useState<IterationReportFilterType>('remaining');
 
     const [lafData, setLafData] = useState<ReportResponse<LafReportItem> | null>(null);
@@ -89,7 +89,7 @@ export const ReportsPage: React.FC = () => {
         setCustomerName('');
         setFromDate('');
         setToDate('');
-        setLafFilterType('daily');
+        setLafFilterType('monthly');
         setIterFilterType('remaining');
     };
 
@@ -132,7 +132,7 @@ export const ReportsPage: React.FC = () => {
         customerName,
         fromDate,
         toDate,
-        activeTab === 'laf' ? (lafFilterType !== 'daily' ? lafFilterType : '') : (iterFilterType !== 'remaining' ? iterFilterType : ''),
+        activeTab === 'laf' ? (lafFilterType !== 'monthly' ? lafFilterType : '') : (iterFilterType !== 'remaining' ? iterFilterType : ''),
     ].filter(Boolean).length;
 
     return (
