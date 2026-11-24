@@ -35,7 +35,7 @@ export const MainLayout: React.FC = () => {
     return (
         <div className="flex h-screen bg-slate-50 overflow-hidden font-sans print:h-auto print:overflow-visible">
             {/* sidebar */}
-            <aside className="w-64 bg-slate-900 text-slate-200 flex flex-col flex-shrink-0 border-r border-slate-800 print:hidden">
+            <aside className="w-56 bg-slate-900 text-slate-200 flex flex-col flex-shrink-0 border-r border-slate-800 print:hidden">
                 {/* brand */}
                 <div className="h-24  pt-8 flex ite,s-center px-6 bg-slate-950 gap-3 border-b border-slate-800">
                     <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white font-bold text-lg">
